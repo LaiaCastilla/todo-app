@@ -5,7 +5,7 @@ function AppHeader() {
   return (
     <div>
         <h1>Hello from the App Header</h1>
-        <Button variant="primary" text="Add"/>
+        <Button variant="primary" text="Add Task"/>
     </div>
   )
 }

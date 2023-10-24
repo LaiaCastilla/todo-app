@@ -1,4 +1,4 @@
-import React, {props} from 'react'
+import React from 'react'
 
 import style from "../styles/modules/button.module.scss"
 import { getClasses } from '../utils/getClasses'
@@ -10,7 +10,7 @@ const buttonTypes={
 
 function Button(props) {
   return (
-    <button className={getClasses([style.button,style[`button--${buttonTypes[props.variant]}`]])}>{props.text}</button>
+    <button className={getClasses([style.button,style[`button--${buttonTypes[props.variant]}`]])}type={props.type=== "submit" ? "submit":"button"}>{props.text}</button>
   )
 }
 
