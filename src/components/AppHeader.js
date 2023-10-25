@@ -1,13 +1,18 @@
 import React from 'react'
-import Button from './Button'
+import Button, {SelectButton} from './Button'
+import style from "../styles/modules/app.module.scss"
 
 function AppHeader() {
   return (
-    <div>
-        <h1>Hello from the App Header</h1>
-        <Button variant="primary" text="Add Task"/>
+    <div className={style.appHeader}>
+      <Button variant="primary" >Add Task</Button>
+      <SelectButton id="status">
+        <option value="all">All</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="completed">Completed</option>
+      </SelectButton>
     </div>
-  )
+  );
 }
 
 export default AppHeader

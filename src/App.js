@@ -9,6 +9,7 @@ function App() {
       <PageTitle/>
       <div className={style.app__wrapper}>
        <AppHeader/>
+       <AppContent/>
       </div>
     </div>
   );
