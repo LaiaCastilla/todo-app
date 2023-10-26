@@ -4,6 +4,10 @@ const getInitialTodo=()=>{
     const localTodoList=window.localStorage.getItem("todoList");
     if(localTodoList){
         return JSON.parse(localTodoList)
+    }else{
+        // if we dont have any local to do list, we create the array(empty)
+        window.localStorage.setItem("todoList",JSON.stringify([]));
+        return [];
     }
 }
 
@@ -25,9 +29,6 @@ export const todoSlice = createSlice({
         //  add the newone
         todoListArray.push({...action.payload,});
         window.localStorage.setItem("todoList",JSON.stringify(todoListArray));
-    }else{
-        // if we do not have a todo list in our local storage, we make it
-        window.localStorage.setItem("todoList",JSON.stringify([{...action.payload}]))
     }}
   },
 });
