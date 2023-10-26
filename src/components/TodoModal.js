@@ -10,7 +10,7 @@ import { v4 as uuid } from 'uuid';
 
 
 function TodoModal({type,modalOpen,setModalOpen}) {
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const [title,setTitle]=useState("")
   const [status, setStatus] = useState("pending")
   
