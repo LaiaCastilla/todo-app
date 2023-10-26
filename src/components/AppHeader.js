@@ -9,12 +9,20 @@ function AppHeader() {
 
   return (
     <div className={style.appHeader}>
-      <Button variant="primary"
-      onClick={() => setModalOpen(true)}
+      {/* I need to put this span with these options for it to work (???) */}
+      <span
+        onClick={() => setModalOpen(true)}
+        onKeyDown={() => setModalOpen(true)}
 
       >
-        Add Task
-      </Button>
+        <Button
+          variant="primary"
+          onClick={() => setModalOpen(true)}
+          onKeyDown={() => setModalOpen(true)}
+        >
+          Add Task
+        </Button>
+      </span>
       <SelectButton id="status">
         <option value="all">All</option>
         <option value="incomplete">Incomplete</option>

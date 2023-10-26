@@ -3,7 +3,7 @@ import style from "../styles/modules/modal.module.scss"
 import {MdOutlineClose} from "react-icons/md"
 import Button from './Button';
 
-function TodoModal({modalOpen, setModalOpen}) {
+function TodoModal({type,modalOpen,setModalOpen}) {
   return (
     <div>
       {modalOpen && (
@@ -35,9 +35,16 @@ function TodoModal({modalOpen, setModalOpen}) {
                 <Button type="submit" variant="primary">
                   Add Task
                 </Button>
-                <Button type="button" variant="secondary">
-                  Cancel
-                </Button>
+                {/* I need to put this span with these options for it to work (???) */}
+                <span
+                  onClick={() => setModalOpen(false)}
+                  onKeyDown={() => setModalOpen(false)}
+                  tabIndex={0}
+                >
+                  <Button type="button" variant="secondary">
+                    Cancel
+                  </Button>
+                </span>
               </div>
             </form>
           </div>
