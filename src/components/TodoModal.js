@@ -5,6 +5,7 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../slices/todoSlice';
 import { v4 as uuid } from 'uuid';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -23,8 +24,9 @@ function TodoModal({type,modalOpen,setModalOpen}) {
             id:uuid(),
             title:title,
             status:status,
-            time:new Date().toLocaleDateString(),
+            time:new Date().toLocaleString(),
         }))
+        toast.success("Task Added Successfully");
       }
     }
 

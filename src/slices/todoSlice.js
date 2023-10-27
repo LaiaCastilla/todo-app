@@ -29,6 +29,12 @@ export const todoSlice = createSlice({
         //  add the newone
         todoListArray.push({...action.payload,});
         window.localStorage.setItem("todoList",JSON.stringify(todoListArray));
+    }else{
+      // if we dont have any local to do list, we create the array(empty)
+      window.localStorage.setItem(
+        "todoList",
+        JSON.stringify([{ ...action.payload }])
+      );
     }}
   },
 });
