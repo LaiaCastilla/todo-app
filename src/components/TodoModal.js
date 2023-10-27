@@ -27,6 +27,9 @@ function TodoModal({type,modalOpen,setModalOpen}) {
             time:new Date().toLocaleString(),
         }))
         toast.success("Task Added Successfully");
+        setModalOpen(false)
+      }else{
+        toast.error("Title shouldn't be empty")
       }
     }
 
