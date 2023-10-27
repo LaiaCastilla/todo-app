@@ -13,7 +13,6 @@ function AppHeader() {
       <span
         onClick={() => setModalOpen(true)}
         onKeyDown={() => setModalOpen(true)}
-
       >
         <Button
           variant="primary"
@@ -25,8 +24,9 @@ function AppHeader() {
       </span>
       <SelectButton id="status">
         <option value="all">All</option>
-        <option value="incomplete">Incomplete</option>
-        <option value="completed">Completed</option>
+        <option value="incomplete">Pending</option>
+        <option value="in progress">In progress</option>
+        <option value="completed">Complete</option>
       </SelectButton>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>

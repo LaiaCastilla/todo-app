@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import TodoItem from './TodoItem';
 
 
 function AppContent() {
@@ -11,7 +12,7 @@ function AppContent() {
   return (
     <div>
       {sortedTodoList && sortedTodoList.length > 0 ?
-        sortedTodoList.map((todo)=>todo.title)
+        sortedTodoList.map((todo)=><TodoItem key={todo.id} todo={todo}/>)
       : "no todo found"}
     </div>
   )
