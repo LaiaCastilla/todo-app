@@ -1,6 +1,8 @@
 import React from 'react'
 import style from "../styles/modules/todoItem.module.scss"
 import { getClasses } from '../utils/getClasses'
+import { MdDelete} from "react-icons/md";
+
 
 
 
@@ -20,7 +22,14 @@ function TodoItem({todo}) {
           >
             {todo.title}
           </p>
-          <p className={style.time}>{todo.time}</p>
+          <p className={style.time}>{todo.time}
+          </p>
+        </div>
+      </div>
+      <div className={style.todoActions}>
+        <div className={style.icon}>
+          <MdDelete/>
+        
         </div>
       </div>
     </div>
