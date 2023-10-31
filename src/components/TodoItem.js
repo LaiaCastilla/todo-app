@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from "../styles/modules/todoItem.module.scss"
 import { getClasses } from '../utils/getClasses'
 import { MdDelete, MdEdit} from "react-icons/md";
@@ -11,7 +11,16 @@ import CheckButton from './CheckButton';
 
 function TodoItem({todo}) {
 const dispatch=useDispatch();
+const [checked,setChecked]=useState(false)
 const [editModalOpen,setEditModalOpen]=useState(false)
+
+useEffect(()=>{
+  if(todo.status==="complete"){
+    setChecked(true)
+  }else{
+    setChecked(false)
+  }
+}, [todo.status])
 
   const handleDelete=()=>{
     dispatch(deleteTodo(todo.id))
@@ -25,7 +34,7 @@ const [editModalOpen,setEditModalOpen]=useState(false)
     <div>
       <div className={style.item}>
         <div className={style.todoDetails}>
-          <CheckButton/>
+          <CheckButton checked={checked} setChecked={setChecked}/>
           <div className={style.text}>
             <p
               className={getClasses([
