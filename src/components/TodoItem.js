@@ -2,13 +2,15 @@ import React from 'react'
 import style from "../styles/modules/todoItem.module.scss"
 import { getClasses } from '../utils/getClasses'
 import { MdDelete, MdEdit} from "react-icons/md";
-
-
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../slices/todoSlice';
 
 
 function TodoItem({todo}) {
+  const dispatch=useDispatch();
   const handleDelete=()=>{
     console.log("Deleting")
+    dispatch(deleteTodo(todo.id))
   }
     const handleEdit = () => {
       console.log("Editing");
