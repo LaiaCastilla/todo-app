@@ -1,58 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../styles/modules/todoItem.module.scss"
 import { getClasses } from '../utils/getClasses'
 import { MdDelete, MdEdit} from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../slices/todoSlice';
+import { toast } from 'react-hot-toast';
+import TodoModal from './TodoModal';
 
 
 function TodoItem({todo}) {
-  const dispatch=useDispatch();
+const dispatch=useDispatch();
+const [editModalOpen,setEditModalOpen]=useState(false)
+
   const handleDelete=()=>{
-    console.log("Deleting")
     dispatch(deleteTodo(todo.id))
+    toast.success("Task deleted succesfully")
   }
     const handleEdit = () => {
       console.log("Editing");
+      setEditModalOpen(true)
     };
   return (
-    <div className={style.item}>
-      <div className={style.todoDetails}>
-        [ ]
-        <div className={style.text}>
-          <p
-            className={getClasses([
-              style.todoText,
-              todo.status === "complete" && style["todoText--completed"],
-              todo.status === "in progress" && style["todoText--inprogress"],
-              todo.status === "pending" && style["todoText--pending"],
-            ])}
+    <div>
+      <div className={style.item}>
+        <div className={style.todoDetails}>
+          [ ]
+          <div className={style.text}>
+            <p
+              className={getClasses([
+                style.todoText,
+                todo.status === "complete" && style["todoText--completed"],
+                todo.status === "in progress" && style["todoText--inprogress"],
+                todo.status === "pending" && style["todoText--pending"],
+              ])}
+            >
+              {todo.title}
+            </p>
+            <p className={style.time}>{todo.time}</p>
+          </div>
+        </div>
+        <div className={style.todoActions}>
+          <div
+            className={style.icon}
+            onClick={handleDelete}
+            onKeyDown={handleDelete}
+            role="button"
+            tabIndex={0}
           >
-            {todo.title}
-          </p>
-          <p className={style.time}>{todo.time}</p>
+            <MdDelete />
+          </div>
+          <div
+            className={style.icon}
+            onClick={handleEdit}
+            onKeyDown={handleEdit}
+            role="button"
+            tabIndex={0}
+          >
+            <MdEdit />
+          </div>
         </div>
       </div>
-      <div className={style.todoActions}>
-        <div
-          className={style.icon}
-          onClick={handleDelete}
-          onKeyDown={handleDelete}
-          role="button"
-          tabIndex={0}
-        >
-          <MdDelete />
-        </div>
-        <div
-          className={style.icon}
-          onClick={handleEdit}
-          onKeyDown={handleEdit}
-          role="button"
-          tabIndex={0}
-        >
-          <MdEdit />
-        </div>
-      </div>
+      <TodoModal todo={todo} type="edit"  modalOpen={editModalOpen} setModalOpen={setEditModalOpen}/>
     </div>
   );
 }
