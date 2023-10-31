@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../slices/todoSlice';
 import { toast } from 'react-hot-toast';
 import TodoModal from './TodoModal';
+import CheckButton from './CheckButton';
 
 
 function TodoItem({todo}) {
@@ -24,7 +25,7 @@ const [editModalOpen,setEditModalOpen]=useState(false)
     <div>
       <div className={style.item}>
         <div className={style.todoDetails}>
-          [ ]
+          <CheckButton/>
           <div className={style.text}>
             <p
               className={getClasses([
