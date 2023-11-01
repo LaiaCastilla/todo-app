@@ -8,9 +8,12 @@ const buttonTypes={
   secondary:"secondary",
 }
 
-function Button({type, variant, children, ...rest }) {
+function Button({type, variant, children,title, ...rest }) {
   return (
     <button
+
+    title={title}
+
       className={getClasses([
         style.button,
         style[`button--${buttonTypes[variant]}`],
@@ -22,9 +25,9 @@ function Button({type, variant, children, ...rest }) {
   );
 }
 
-function SelectButton({children, id, ...rest}){
+function SelectButton({children, id,title, ...rest}){
   return(
-    <select className={getClasses([style.button,style.button__select])} {...rest}>{children}</select>
+    <select className={getClasses([style.button,style.button__select])} {...rest} title={title}>{children}</select>
   )
 }
 export {SelectButton}

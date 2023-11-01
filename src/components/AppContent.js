@@ -46,7 +46,7 @@ return item.status === filterStatus;
       <AnimatePresence>
       {filteredTodoList && filteredTodoList.length > 0 ?
         filteredTodoList.map((todo)=><TodoItem key={todo.id} todo={todo}/>)
-      : <motion.p className={style.emptyText} variants={child}>No task found</motion.p>}
+      : <motion.p className={style.emptyText} variants={child}>No tasks found</motion.p>}
       </AnimatePresence>
     </motion.div>
   )

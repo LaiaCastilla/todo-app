@@ -123,6 +123,7 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
               <label htmlFor="title">
                 Title
                 <input
+                  autoFocus="on"
                   type="text"
                   id="title"
                   value={title}
@@ -143,7 +144,7 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
                 </select>
               </label>
               <div className={style.buttonContainer}>
-                <Button type="submit" variant="primary">
+                <Button type="submit" variant="primary" title="Add task to your todo list">
                   {type === "edit" ? "Edit" : "Add"} Task
                 </Button>
                 {/* I need to put this span with these options for it to work (???) */}
@@ -152,7 +153,7 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
                   onKeyDown={() => setModalOpen(false)}
                   tabIndex={0}
                 >
-                  <Button type="button" variant="secondary">
+                  <Button type="button" variant="secondary" title="Cancel this addition">
                     Cancel
                   </Button>
                 </span>

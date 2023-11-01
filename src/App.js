@@ -22,24 +22,27 @@ function App() {
               href="https://github.com/LaiaCastilla/todo-app"
               target="_blank"
               rel="noreferrer"
+              title="Check this app's code"
             >
-              Open-sourced
+            Coded
             </a>{" "}
-            coded by{" "}
+            by{" "}
             <a
               className={style.app__footer__link}
               href="https://laiacastilla.com"
               target="_blank"
               rel="noreferrer"
+              title="Visit my portfolio"
             >
               Laia
-            </a>,{" "}
-            adapted from{" "}
+            </a>
+            , adapted from{" "}
             <a
               className={style.app__footer__link}
               href="https://www.youtube.com/watch?v=W0Uf_xu350k"
               target="_blank"
               rel="noreferrer"
+              title="This is the tutorial I followed"
             >
               <i className="fa-brands fa-youtube"></i>
             </a>

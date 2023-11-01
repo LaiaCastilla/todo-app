@@ -52,7 +52,7 @@ useEffect(()=>{
     <div>
       <motion.div className={style.item} variants={child}>
         <div className={style.todoDetails}>
-          <CheckButton checked={checked} handleCheck={handleCheck}/>
+          <CheckButton checked={checked} handleCheck={handleCheck} />
           <div className={style.texts}>
             <p
               className={getClasses([
@@ -72,6 +72,7 @@ useEffect(()=>{
             className={style.icon}
             onClick={handleDelete}
             onKeyDown={handleDelete}
+            title="Delete this task"
             role="button"
             tabIndex={0}
           >
@@ -81,6 +82,7 @@ useEffect(()=>{
             className={style.icon}
             onClick={handleEdit}
             onKeyDown={handleEdit}
+            title='Edit this task'
             role="button"
             tabIndex={0}
           >

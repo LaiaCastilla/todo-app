@@ -26,6 +26,7 @@ function AppHeader() {
         onKeyDown={() => setModalOpen(true)}
       >
         <Button
+          title="Add a task to your todo list"
           variant="primary"
           onClick={() => setModalOpen(true)}
           onKeyDown={() => setModalOpen(true)}
@@ -33,7 +34,12 @@ function AppHeader() {
           Add Task
         </Button>
       </span>
-      <SelectButton id="status" value={filterStatus} onChange={upateFilter}>
+      <SelectButton
+        id="status"
+        value={filterStatus}
+        onChange={upateFilter}
+        title="Filter your tasks"
+      >
         <option value="all">All</option>
         <option value="pending">Pending</option>
         <option value="in progress">In progress</option>
