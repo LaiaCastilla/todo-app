@@ -6,6 +6,8 @@ import AppHeader from "./components/AppHeader";
 import AppContent from "./components/AppContent";
 
 
+
+
 function App() {
   return (
     <div>
@@ -21,7 +23,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Open-sourced 
+              Open-sourced
             </a>{" "}
             coded by{" "}
             <a
@@ -31,6 +33,15 @@ function App() {
               rel="noreferrer"
             >
               Laia
+            </a>,{" "}
+            adapted from{" "}
+            <a
+              className={style.app__footer__link}
+              href="https://www.youtube.com/watch?v=W0Uf_xu350k"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa-brands fa-youtube"></i>
             </a>
           </footer>
         </div>
