@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import style from "../styles/modules/todoItem.module.scss"
+import { motion } from "framer-motion";
 import { getClasses } from '../utils/getClasses'
 import { MdDelete, MdEdit} from "react-icons/md";
 import { useDispatch } from 'react-redux';
@@ -7,6 +8,15 @@ import { deleteTodo,editTodo } from '../slices/todoSlice';
 import { toast } from 'react-hot-toast';
 import TodoModal from './TodoModal';
 import CheckButton from './CheckButton';
+
+
+const child = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
 
 function TodoItem({todo}) {
@@ -40,7 +50,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <div className={style.item}>
+      <motion.div className={style.item} variants={child}>
         <div className={style.todoDetails}>
           <CheckButton checked={checked} handleCheck={handleCheck}/>
           <div className={style.texts}>
@@ -77,7 +87,7 @@ useEffect(()=>{
             <MdEdit />
           </div>
         </div>
-      </div>
+      </motion.div>
       <TodoModal todo={todo} type="edit"  modalOpen={editModalOpen} setModalOpen={setEditModalOpen}/>
     </div>
   );
