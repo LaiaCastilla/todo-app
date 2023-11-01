@@ -6,9 +6,29 @@ import { useDispatch } from 'react-redux';
 import { addTodo, editTodo } from '../slices/todoSlice';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-hot-toast';
+import { AnimatePresence,motion } from 'framer-motion';
 
 
-
+const dropIn ={
+  hidden:{
+    opacity:0,
+    transform:"scale(0.9)",
+  },
+  visible:{
+    transform:"scale(1)",
+    opacity:1,
+    transition:{
+      duration:0.1,
+      type:"spring",
+      damping:25,
+      stiffness:500,
+    },
+  },
+  exit:{
+    transform:"scale(0.9)",
+    opacity:0,
+  }
+};
 
 function TodoModal({type,modalOpen,setModalOpen,todo}) {
   const dispatch = useDispatch()
@@ -65,9 +85,14 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
     }
 
   return (
-    modalOpen && (
-      <div className={style.wrapper}>
-        <div className={style.container}>
+    <AnimatePresence>
+     {modalOpen && (
+      <motion.div className={style.wrapper} 
+      initial={{opacity:0}} 
+      animate={{opacity:1}} 
+      exit={{opacity:0}}>
+        <motion.div className={style.container} variants={dropIn}
+        initial="hidden" animate="visible" exit="exit">
           <div
             className={style.closeButton}
             onClick={() => setModalOpen(false)}
@@ -122,9 +147,10 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
               </span>
             </div>
           </form>
-        </div>
-      </div>
-    )
+        </motion.div>
+      </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
