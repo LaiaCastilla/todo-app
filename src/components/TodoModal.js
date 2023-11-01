@@ -78,6 +78,7 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
            toast.success("Task Updated Successfully");
         }else{
           toast.error("No changes made")
+          return;
         }
       }
        setModalOpen(false);
@@ -86,69 +87,79 @@ function TodoModal({type,modalOpen,setModalOpen,todo}) {
 
   return (
     <AnimatePresence>
-     {modalOpen && (
-      <motion.div className={style.wrapper} 
-      initial={{opacity:0}} 
-      animate={{opacity:1}} 
-      exit={{opacity:0}}>
-        <motion.div className={style.container} variants={dropIn}
-        initial="hidden" animate="visible" exit="exit">
-          <div
-            className={style.closeButton}
-            onClick={() => setModalOpen(false)}
-            onKeyDown={() => setModalOpen(false)}
-            tabIndex={0}
-            role="button"
+      {modalOpen && (
+        <motion.div
+          className={style.wrapper}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className={style.container}
+            variants={dropIn}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <MdOutlineClose />
-          </div>
-          <form
-            className={style.form}
-            onSubmit={(event) => handleSubmit(event)}
-          >
-            <h1 className={style.formTitle}>
-              {type === "edit" ? "Edit" : "Add"} Task
-            </h1>
-            <label htmlFor="title">
-              Title
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-              />
-            </label>
-            <label htmlFor="status">
-              Status
-              <select
-                name="status"
-                id="status"
-                value={status}
-                onChange={(event) => setStatus(event.target.value)}
-              >
-                <option value="pending">Pending</option>
-                <option value="complete">Complete</option>
-                <option value="in progress">In progress</option>
-              </select>
-            </label>
-            <div className={style.buttonContainer}>
-              <Button type="submit" variant="primary">
+            <motion.div
+              className={style.closeButton}
+              onClick={() => setModalOpen(false)}
+              onKeyDown={() => setModalOpen(false)}
+              tabIndex={0}
+              role="button"
+              initial={{ top: 40, opacity: 0 }}
+              animate={{ top: -10, opacity: 1 }}
+              exit={{top:40, opacity:0}}
+            >
+              <MdOutlineClose />
+            </motion.div>
+            <form
+              className={style.form}
+              onSubmit={(event) => handleSubmit(event)}
+            >
+              <h1 className={style.formTitle}>
                 {type === "edit" ? "Edit" : "Add"} Task
-              </Button>
-              {/* I need to put this span with these options for it to work (???) */}
-              <span
-                onClick={() => setModalOpen(false)}
-                onKeyDown={() => setModalOpen(false)}
-                tabIndex={0}
-              >
-                <Button type="button" variant="secondary">
-                  Cancel
+              </h1>
+              <label htmlFor="title">
+                Title
+                <input
+                  type="text"
+                  id="title"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+              </label>
+              <label htmlFor="status">
+                Status
+                <select
+                  name="status"
+                  id="status"
+                  value={status}
+                  onChange={(event) => setStatus(event.target.value)}
+                >
+                  <option value="pending">Pending</option>
+                  <option value="complete">Complete</option>
+                  <option value="in progress">In progress</option>
+                </select>
+              </label>
+              <div className={style.buttonContainer}>
+                <Button type="submit" variant="primary">
+                  {type === "edit" ? "Edit" : "Add"} Task
                 </Button>
-              </span>
-            </div>
-          </form>
+                {/* I need to put this span with these options for it to work (???) */}
+                <span
+                  onClick={() => setModalOpen(false)}
+                  onKeyDown={() => setModalOpen(false)}
+                  tabIndex={0}
+                >
+                  <Button type="button" variant="secondary">
+                    Cancel
+                  </Button>
+                </span>
+              </div>
+            </form>
+          </motion.div>
         </motion.div>
-      </motion.div>
       )}
     </AnimatePresence>
   );
