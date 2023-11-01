@@ -2,11 +2,13 @@
 
 .item {
   display: flex;
+  row-gap: 10rem;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
   background: var(--white);
-  margin-bottom: 1.5rem;
+  // original was 1.5 rem
+  margin-bottom: 3rem;
   border-radius: 4px;
   &:last-child {
     margin-bottom: 0;

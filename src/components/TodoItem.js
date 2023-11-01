@@ -3,7 +3,7 @@ import style from "../styles/modules/todoItem.module.scss"
 import { getClasses } from '../utils/getClasses'
 import { MdDelete, MdEdit} from "react-icons/md";
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../slices/todoSlice';
+import { deleteTodo,editTodo } from '../slices/todoSlice';
 import { toast } from 'react-hot-toast';
 import TodoModal from './TodoModal';
 import CheckButton from './CheckButton';
@@ -27,15 +27,23 @@ useEffect(()=>{
     toast.success("Task deleted succesfully")
   }
     const handleEdit = () => {
-      console.log("Editing");
       setEditModalOpen(true)
     };
+
+  const handleCheck=()=>{
+    // the opposite of the current check
+    setChecked(!checked)
+    dispatch(editTodo({...todo,
+    status:checked?"pending":"complete"}))
+    
+  };
+
   return (
     <div>
       <div className={style.item}>
         <div className={style.todoDetails}>
-          <CheckButton checked={checked} setChecked={setChecked}/>
-          <div className={style.text}>
+          <CheckButton checked={checked} handleCheck={handleCheck}/>
+          <div className={style.texts}>
             <p
               className={getClasses([
                 style.todoText,
